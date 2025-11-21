@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Daily Goal Tracker - Track your daily goals and build consistency">
+    <title>Daily Goal Tracker - Stay Consistent!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">📝 Daily Goal Tracker</h1>
+            <p class="tagline">Track goals, build consistency, achieve more!</p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <div class="container">
+            <div class="grid-layout">
+
+                <!-- Left Column: Goals & Actions -->
+                <div class="left-column">
+
+                    <!-- Daily Summary Card -->
+                    <section class="card summary-card">
+                        <div class="card-header">
+                            <h2>📅 Hari Ini</h2>
+                            <p class="current-date" id="currentDate">Loading...</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="summary-content">
+                                <div class="completion-status" id="completionStatus">
+                                    <span class="status-text">Belum ada goal</span>
+                                </div>
+                                <div class="progress-section">
+                                    <div class="progress-info">
+                                        <span class="progress-label">Progress Hari Ini</span>
+                                        <span class="progress-count" id="progressCount">0/0</span>
+                                    </div>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar" id="progressBar">
+                                            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-percentage" id="progressPercentage">0%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Add Goal Form -->
+                    <section class="card add-goal-card">
+                        <div class="card-header">
+                            <h2>➕ Tambah Goal Baru</h2>
+                        </div>
+                        <div class="card-body">
+                            <form id="addGoalForm" class="add-goal-form">
+                                <input
+                                    type="text"
+                                    id="goalInput"
+                                    class="goal-input"
+                                    placeholder="Contoh: Belajar 2 jam, Olahraga 30 menit, Baca 20 halaman"
+                                    maxlength="100"
+                                    autocomplete="off"
+                                >
+                                <button type="submit" class="btn btn-primary" id="addGoalBtn">
+                                    Tambah Goal
+                                </button>
+                            </form>
+                            <p class="goal-limit-info" id="goalLimitInfo">
+                                <span id="goalCount">0</span>/5 goals
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Goals List -->
+                    <section class="card goals-card">
+                        <div class="card-header">
+                            <h2>✅ Goals Hari Ini</h2>
+                        </div>
+                        <div class="card-body">
+                            <div id="goalsList" class="goals-list">
+                                <div class="empty-state" id="emptyState">
+                                    <div class="empty-icon">🎯</div>
+                                    <p>Belum ada goal hari ini</p>
+                                    <p class="empty-subtitle">Tambahkan goal pertamamu untuk memulai!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- Right Column: Stats & Calendar -->
+                <div class="right-column">
+
+                    <!-- Streak Card -->
+                    <section class="card streak-card">
+                        <div class="card-header">
+                            <h2>🔥 Streak</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="streak-content">
+                                <div class="streak-main">
+                                    <div class="streak-icon">🔥</div>
+                                    <div class="streak-number" id="currentStreak">0</div>
+                                    <div class="streak-label">Hari Berturut-turut</div>
+                                </div>
+                                <div class="streak-message" id="streakMessage">
+                                    Ayo mulai streak!
+                                </div>
+                                <div class="best-streak">
+                                    <span class="best-streak-label">Best Streak:</span>
+                                    <span class="best-streak-number" id="bestStreak">0</span>
+                                    <span>hari 🏆</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Statistics Card -->
+                    <section class="card stats-card">
+                        <div class="card-header">
+                            <h2>📊 Statistik</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-value" id="totalDays">0</div>
+                                    <div class="stat-label">Total Hari</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value" id="totalGoals">0</div>
+                                    <div class="stat-label">Total Goals</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value" id="successRate">0%</div>
+                                    <div class="stat-label">Success Rate</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value" id="avgGoals">0</div>
+                                    <div class="stat-label">Avg Goals/Hari</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Calendar Card -->
+                    <section class="card calendar-card">
+                        <div class="card-header">
+                            <h2>📅 30 Hari Terakhir</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="calendar-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color legend-complete"></span>
+                                    <span class="legend-text">Complete</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color legend-partial"></span>
+                                    <span class="legend-text">Partial</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color legend-none"></span>
+                                    <span class="legend-text">None</span>
+                                </div>
+                            </div>
+                            <div id="calendarGrid" class="calendar-grid">
+                                <!-- Calendar akan di-render via JavaScript -->
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Daily Goal Tracker - Tim MojagDev (SMK Unggulan NU Mojoagung)</p>
+        </div>
+    </footer>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast">
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
