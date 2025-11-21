@@ -4,12 +4,9 @@
 
 ---
 
-## 📋 Informasi Lomba
-
-- **Lomba**: Arek_AI Murid Jatim 2025
+## 📋 Informasi
 - **Tim**: MojagDev
 - **Asal Sekolah**: SMK Unggulan NU Mojoagung
-- **Kategori**: Aplikasi Web
 
 ---
 
